@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>SetFSB Crack (Keygen, no download needed, everything is in browser)</title>
+  <style type="text/css">
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+  <script>
+    function println(str) {
+      document.getElementById("output").innerHTML += (str + "</br>");
+    }
+    function clear() {
+      document.getElementById("output").innerHTML = "";
+    }
+    function crc32(bytes) {
+      var crc = 0 ^ (-1);
+      
+      for (var i = 0; i < bytes.length; i++) {
+        crc = crc ^ bytes[i];
+        for (var j = 0; j < 8; j++) {
+          if (crc & 1) {
+            crc = crc >> 1 & 0x7FFFFFFF ^ 0xEDB88320;
+          } else {
+            crc = crc >> 1 & 0x7FFFFFFF;
+          }
+        }
+      }
+      
+      return (crc ^ (-1)) >>> 0;
+    }
+    function strToBytes(str) {
+      var bytes = [];
+      
+      for (var i = 0; i < str.length; i++) {
+        bytes.push(str.charCodeAt(i));
+      }
+      
+      return bytes;
+    }
+    function intToBytesLittleEndian(int) {
+      return [0xFF & (int >> 0), 0xFF & (int >> 8), 0xFF & (int >> 16), 0xFF & (int >> 24)];
+    }
+    function genFromID() {
+      clear();
+      var id = parseInt(document.getElementById("str").value);
+      if (isNaN(id)) {
+        println("ID must be a number. Press \"Generate using username\" if you entered your username in the box.");
+        return;
+      }
+      
+      println("Your activation key is <b>" + genKey(id) + "</b>");
+    }
+    function genFromUsername() {
+      clear();
+      var id = genID(document.getElementById("str").value);
+      
+      println("Your ID is " + id)
+      println("Your activation key is <b>" + genKey(id) + "</b>");
+    }
+    function genID(var_206) { // Username -> ID
+      return (crc32(strToBytes(var_206)) ^ 0x19530501) >>> 0;
+    }
+    function genKey(var_183) { // ID -> Activation key
+      var var_181 = var_183 ^ 0x19560223;
+      var_181 ^= 0x20120425; // Added in latest version
+      
+      crc_var_181 = crc32(intToBytesLittleEndian(var_181));
+      key = crc_var_181 * (crc_var_181 != 0) | 0x19560223 * (crc_var_181 == 0);
+      
+      return key >>> 0;
+    }
+  </script>
+</head>
+
+<body>
+  <h2>SetFSB Crack (Keygen, no download needed, everything is in browser)</h2>
+  <p>This generator works with SetFSB version 2.3.178.134 (<del>download from official website here: <a href="http://www13.plala.or.jp/setfsb/">http://www13.plala.or.jp/setfsb/</a>, direct link: <a href="http://www13.plala.or.jp/setfsb/download/ver23/setfsb_2_3_178_134.zip">http://www13.plala.or.jp/setfsb/download/ver23/setfsb_2_3_178_134.zip</a></del>). Since the author decided to stop selling SetFSB and took down the download, you can download it here: <a href="https://keygens.github.io/setfsb_2_3_178_134.zip">https://keygens.github.io/setfsb_2_3_178_134.zip</a>. See keygen's source code on github: <a href="https://github.com/keygens/keygens.github.io/blob/master/setfsb.html">https://github.com/keygens/keygens.github.io/blob/master/setfsb.html</a>
+    <br/>
+    <br/>
+    <b>Instrutions: </b> Input your SetFSB ID or Windows username (the ID is calculated using the username) in the box and click "Generate using ID" or "Generate using username" to get your activation key.</p>
+  <input type="text" id="str"/>
+  <button onclick="genFromID()">Generate using ID</button>
+  <button onclick="genFromUsername()">Generate using username</button>
+  <br/>
+  <br/>
+  <div id="output"></div>
+</body>
+
+</html>
